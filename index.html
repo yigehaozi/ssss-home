@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssss.ss</title>
+    <link rel="stylesheet" href="styles.css?v1.0.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/harmonyos-sans/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.1/index.min.css">
+    <!-- 或者尝试这个 CDN -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iuxt/src/harmony/harmony.css"> -->
+    <meta name="description" content="ssss.ss - 极简之名，过目不忘">
+    <meta name="keywords" content="简约, 设计, 网站, ssss.ss">
+    <meta property="og:title" content="ssss.ss">
+    <meta property="og:description" content="极简之名，过目不忘">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ssss.ss">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ssss.ss">
+    <meta name="twitter:description" content="极简之名，过目不忘">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23111'/%3E%3Ctext x='50%25' y='50%25' font-family='Space Grotesk, Arial' font-size='16' font-weight='600' fill='white' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23111'/%3E%3Ctext x='50%25' y='50%25' font-family='Space Grotesk, Arial' font-size='16' font-weight='600' fill='white' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <div class="loader">
+        <span class="loader-dot"></span>
+        <span class="loader-dot"></span>
+        <span class="loader-dot"></span>
+    </div>
+    <canvas id="particles-bg"></canvas>
+    
+    <!-- 添加主题变更通知 -->
+    <div id="theme-notification" class="theme-notification">
+        <div class="notification-content">
+            <span id="theme-notification-text">已切换到浅色模式</span>
+        </div>
+    </div>
+    
+    <div class="minimal-nav">
+        <a href="#" class="nav-link" id="about-link" aria-label="关于">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </a>
+        <a href="#" class="nav-link" id="contact-link" aria-label="联系">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+        <button id="theme-toggle-btn" aria-label="切换颜色模式" class="theme-btn">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <div class="wrapper">
+        <div class="content">
+            <div class="domain-name">
+                <span class="part first">ssss</span>
+                <span class="part dot">.</span>
+                <span class="part last">ss</span>
+            </div>
+            <div class="tagline">纯粹简约，独一无二</div>
+        </div>
+    </div>
+    <script src="script.js?v1.0.1"></script>
+    
+    <!-- 在body结束前添加关于弹窗 -->
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>关于 ssss.ss</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>ssss.ss 是一个独特而优雅的超短域名，由4个"s"和2个"s"组成，形成了视觉上的完美对称。</p>
+                <p>这个域名的特点：</p>
+                <ul>
+                    <li><strong>简短易记</strong> - 仅由6个相同字母和一个点号组成</li>
+                    <li><strong>视觉对称</strong> - 点号两侧分别是4个和2个"s"，形成平衡美感</li>
+                    <li><strong>易于输入</strong> - 只需按一个键即可完成域名输入</li>
+                    <li><strong>独特稀有</strong> - 超短域名在互联网上极为稀缺</li>
+                </ul>
+                <p>在互联网纷繁复杂的今天，拥有一个简短、易记且优雅的域名是品牌建设的重要基石。ssss.ss 正是这样一个完美的数字资产。</p>
+                <p>无论用于个人品牌、创业项目还是艺术作品展示，ssss.ss 都能以最简约的形式传达最强烈的品牌印象。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 更新联系方式弹窗 -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>联系方式</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="contact-grid">
+                    <!-- 邮箱 -->
+                    <a href="mailto:6@6.ke" class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>6@6.ke</span>
+                    </a>
+                    <!-- 微信 -->
+                    <a href="#" class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024" fill="currentColor">
+                            <path d="M692.3 336.8c11.4 0 22.9 0.8 34.3 2.1-30.8-143.9-184.2-251.1-359.9-251.1-196 0-356.8 133.5-356.8 305.8 0 98.8 53.9 180.1 143.9 243.1l-36 108.1 125.6-62.9c45 8.9 81.1 18.1 125.6 18.1 11.3 0 22.5-0.5 33.6-1.4-7-24-11.1-49.1-11.1-75.2.1-158 135.5-286.6 301.8-286.6zM499.1 232.6c27.1 0 45.1 17.9 45.1 45s-18 45-45.1 45c-27 0-54.1-17.9-54.1-45s27.1-45 54.1-45zM267.8 322.6c-27 0-54.1-17.9-54.1-45s27.1-45 54.1-45c27.1 0 45.1 17.9 45.1 45s-18 45-45.1 45zM930.6 605.3c0-143.9-143.9-261.1-305.8-261.1-171.3 0-305.9 117.2-305.9 261.1 0 144 134.6 261.1 305.9 261.1 35.8 0 72-9 107.9-17.9l98.7 54.1-27.1-89.9c72.6-54.1 125.4-126 125.4-207.4zM618.7 559.5c-18 0-36.1-17.9-36.1-36s18.1-36 36.1-36c27.1 0 45.1 17.9 45.1 36s-18 36-45.1 36zM795.4 559.5c-17.9 0-36-17.9-36-36s18.1-36 36-36c27.1 0 45.1 17.9 45.1 36s-18 36-45.1 36z"/>
+                        </svg>
+                        <span>YiQunShi</span>
+                    </a>
+                    <!-- QQ -->
+                    <a href="#" class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024" fill="currentColor">
+                            <path d="M511.09761 957.257c-80.159 0-153.737-25.019-201.11-62.386-24.057 6.702-54.831 17.489-74.252 30.864-16.617 11.439-14.546 23.106-11.55 27.816 13.15 20.689 225.583 13.211 286.912 6.767v-3.061z"/>
+                            <path d="M496.65061 957.257c80.157 0 153.737-25.019 201.11-62.386 24.057 6.702 54.83 17.489 74.253 30.864 16.616 11.439 14.543 23.106 11.55 27.816-13.15 20.689-225.584 13.211-286.914 6.767v-3.061z"/>
+                            <path d="M497.12861 474.524c131.934-0.876 237.669-25.783 273.497-35.34 8.541-2.28 13.11-6.364 13.11-6.364 0.03-1.172 0.542-20.952 0.542-31.155C784.27761 229.833 701.12561 57.173 496.64061 57.162 292.15661 57.173 209.00061 229.832 209.00061 401.665c0 10.203 0.516 29.983 0.547 31.155 0 0 3.717 3.821 10.529 5.67 33.078 8.98 140.803 35.139 276.08 36.034h0.972z"/>
+                            <path d="M860.28261 619.782c-8.12-26.086-19.204-56.506-30.427-85.72 0 0-6.456-0.795-9.718 0.148-100.71 29.205-222.773 47.818-315.792 46.695h-0.962C410.88561 582.017 289.65061 563.617 189.27961 534.698c-3.262-0.963-9.736-0.148-9.736-0.148-11.222 29.214-22.307 59.634-30.427 85.72-38.36 123.76-19.618 156.27-12.457 156.86 16.952 1.395 66.135-20.348 112.622-44.319 0 0 13.337 12.118 37.645 29.01C328.00761 821.73 396.64061 868.021 512.00061 868.801c116.428-0.78 187.009-47.564 227.533-106.688 24.555-16.851 37.663-28.993 37.663-28.993 46.487 23.971 95.671 45.714 112.622 44.319 7.16-0.59 25.902-33.1-12.454-156.857z"/>
+                        </svg>
+                        <span>6908506</span>
+                    </a>
+                    <!-- 论坛网址 -->
+                    <a href="https://6ke.li" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span>6ke论坛</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
