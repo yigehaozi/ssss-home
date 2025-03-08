@@ -3,9 +3,10 @@
     --text-color: #111111;
     --secondary-text: #666666;
     --copyright-color: #999999;
-    --gradient-start: #111111;
-    --gradient-end: #333333;
+    --gradient-start: #006fff;
+    --gradient-end: #0052cc;
     --particle-color: rgba(0, 0, 0, 0.1);
+    --font-family: 'HarmonyOS Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -13,8 +14,8 @@
     --text-color: #ffffff;
     --secondary-text: #cccccc;
     --copyright-color: #888888;
-    --gradient-start: #ffffff;
-    --gradient-end: #cccccc;
+    --gradient-start: #006fff;
+    --gradient-end: #0052cc;
     --particle-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -25,7 +26,7 @@
 }
 
 body {
-    font-family: 'HarmonyOS Sans', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-color);
     height: 100vh;
@@ -182,20 +183,42 @@ body[data-theme="dark"] .sun-icon {
 .domain-name {
     font-size: clamp(60px, 15vw, 180px);
     font-weight: 600;
-    letter-spacing: -0.04em;
-    margin-bottom: 20px;
-    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    position: relative;
+    margin-bottom: 30px;
     line-height: 1;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 1s ease-out forwards;
+    transition: color 0.3s ease;
 }
 
-.domain-name .part {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+/* 为第一部分(ssss)添加渐变色，使用#006eff作为主色调 */
+.domain-name .part.first {
+    background: linear-gradient(135deg, #004db8 0%, #006eff 50%, #4a9fff 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    transition: background 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: transparent;
+    display: inline-block;
 }
+
+/* 为点添加特殊样式但保持大小和间距 */
+.domain-name .part.dot {
+    color: var(--text-color);
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* 为第二部分(ss)添加渐变色，创建对称效果 */
+.domain-name .part.last {
+    background: linear-gradient(135deg, #4a9fff 0%, #006eff 50%, #004db8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
 
 .domain-name .first {
     animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -217,8 +240,8 @@ body[data-theme="dark"] .sun-icon {
     animation: none;
     color: var(--secondary-text);
     margin: 0;
-    margin-left: -0.32em;
-    margin-right: -0.28em;
+    margin-left: -0.33em;
+    margin-right: -0.25em;
     font-weight: 300;
     background: none;
     -webkit-text-fill-color: var(--secondary-text);
@@ -273,49 +296,90 @@ body[data-theme="dark"] .sun-icon {
 /* 极简图标导航 */
 .minimal-nav {
     position: fixed;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     display: flex;
-    gap: 8px;
+    gap: 12px;
     z-index: 100;
 }
 
+/* 导航按钮基础样式 */
 .nav-link, .theme-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: rgba(250, 250, 250, 0.8);
-    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #555;
     text-decoration: none;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] .nav-link,
-[data-theme="dark"] .theme-btn {
-    background-color: rgba(30, 30, 30, 0.8);
-    color: #eee;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.nav-link:hover, .theme-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.theme-btn {
-    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
     cursor: pointer;
 }
 
+/* 悬停效果 - 添加蓝色调 */
+.nav-link:hover, .theme-btn:hover {
+    background-color: rgba(0, 110, 255, 0.1);
+    color: #006eff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 110, 255, 0.15);
+    border-color: rgba(0, 110, 255, 0.2);
+}
+
+/* 活跃状态 */
+.nav-link:active, .theme-btn:active {
+    transform: translateY(0);
+    background-color: rgba(0, 110, 255, 0.15);
+}
+
+/* 主题切换按钮 */
+.theme-btn {
+    border: none;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
 .theme-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* 深色模式调整 */
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .theme-btn {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: #ccc;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .theme-btn:hover {
+    background-color: rgba(0, 110, 255, 0.25);
+    color: #59a7ff;
+    border-color: rgba(89, 167, 255, 0.3);
+}
+
+[data-theme="dark"] .nav-link:active,
+[data-theme="dark"] .theme-btn:active {
+    background-color: rgba(0, 110, 255, 0.35);
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+    .nav-link, .theme-btn {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .nav-link svg, .theme-btn svg {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 /* 使用图标替代文字，需要在HTML中添加 */
@@ -646,49 +710,6 @@ a[href="https://6ke.li"]:hover:after {
     opacity: 1;
 }
 
-/* 移动端适配 */
-@media (max-width: 480px) {
-    .modal-header {
-        padding: 20px 24px;
-    }
-    
-    .modal-header h2 {
-        font-size: 1.5rem;
-    }
-    
-    .modal-body {
-        padding: 24px;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-    
-    .contact-item {
-        padding: 16px;
-    }
-    
-    .minimal-nav {
-        padding: 6px 12px;
-        gap: 10px;
-    }
-    
-    .nav-link {
-        font-size: 14px;
-        padding: 4px 8px;
-    }
-    
-    .theme-btn {
-        padding: 4px 8px;
-    }
-    
-    .theme-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-}
-
 /* 添加联系方式的品牌色彩 */
 /* 邮箱图标 - 蓝色系 */
 a[href^="mailto"] .contact-item svg,
@@ -764,4 +785,177 @@ a[href^="https://6ke.li"] {
 /* 当激活深色模式时调整颜色亮度 */
 [data-theme="dark"] .contact-item svg {
     filter: brightness(1.15);
-} 
+}
+
+/* 全屏按钮样式 */
+.fullscreen-icon, .exit-fullscreen-icon {
+    transition: all 0.3s ease;
+}
+
+/* 在全屏模式下隐藏进入全屏图标，显示退出全屏图标 */
+.is-fullscreen .fullscreen-icon {
+    display: none;
+}
+
+.is-fullscreen .exit-fullscreen-icon {
+    display: block;
+}
+
+/* 在非全屏模式下隐藏退出全屏图标，显示进入全屏图标 */
+:not(.is-fullscreen) .fullscreen-icon {
+    display: block;
+}
+
+:not(.is-fullscreen) .exit-fullscreen-icon {
+    display: none;
+}
+
+/* 全屏模式下的一些优化 */
+:fullscreen {
+    background-color: var(--bg-color);
+}
+
+:-webkit-full-screen {
+    background-color: var(--bg-color);
+}
+
+:-moz-full-screen {
+    background-color: var(--bg-color);
+}
+
+:-ms-fullscreen {
+    background-color: var(--bg-color);
+}
+
+/* 修复全屏按钮的鼠标指针 */
+#fullscreen-btn {
+    cursor: pointer;
+}
+
+/* 或者更全面地修复所有导航按钮 */
+.nav-link, .theme-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #555;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+}
+
+/* 修复域名波浪动画效果，保留原始渐变色 */
+.wave-letter {
+    display: inline-block;
+    position: relative;
+    animation: letterWave 2s ease-in-out infinite;
+    transform-origin: center;
+    /* 确保继承任何渐变或特殊颜色效果 */
+    background-clip: inherit;
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+    /* 修改立体文字阴影效果，去掉蓝色 */
+    text-shadow: 
+        0 1px 0 rgba(0, 0, 0, 0.1),
+        0 2px 0 rgba(0, 0, 0, 0.05),
+        0 3px 3px rgba(0, 0, 0, 0.05);
+    /* 添加微妙的3D变换 */
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease;
+    font-family: inherit;
+}
+
+/* 深色模式下的立体效果调整，去掉蓝色 */
+[data-theme="dark"] .wave-letter {
+    text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.1),
+        0 2px 0 rgba(255, 255, 255, 0.05),
+        0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* 增强悬停时的立体效果，去掉蓝色 */
+.domain-name:hover .wave-letter {
+    animation-play-state: paused;
+    transform: translateZ(5px);
+    text-shadow: 
+        0 1px 0 rgba(0, 0, 0, 0.15),
+        0 2px 0 rgba(0, 0, 0, 0.1),
+        0 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 深色模式下悬停立体效果，去掉蓝色 */
+[data-theme="dark"] .domain-name:hover .wave-letter {
+    text-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.15),
+        0 2px 0 rgba(255, 255, 255, 0.1),
+        0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 为奇偶字母添加稍微不同的立体感 */
+.wave-letter:nth-child(odd) {
+    transform: perspective(500px) rotateX(2deg);
+}
+
+.wave-letter:nth-child(even) {
+    transform: perspective(500px) rotateX(-2deg);
+}
+
+/* 减小波浪幅度，使其更加精致 */
+@keyframes letterWave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-3px); /* 减小上下波动幅度 */
+    }
+    75% {
+        transform: translateY(3px); /* 减小上下波动幅度 */
+    }
+}
+
+/* 交错波浪效果：相邻字母动画相反 */
+.wave-letter:nth-child(even) {
+    animation-direction: alternate-reverse;
+}
+
+/* 确保波浪动画不会破坏原有的hover效果 */
+.domain-name:hover .wave-letter {
+    animation-play-state: paused;
+}
+
+/* 添加鸿蒙字体设置 */
+@font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('https://cdn.jsdelivr.net/gh/younghz/HarmonyOS-Sans/HarmonyOS_Sans_SC_Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('https://cdn.jsdelivr.net/gh/younghz/HarmonyOS-Sans/HarmonyOS_Sans_SC_Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 确保域名文字使用鸿蒙字体 */
+.domain-name .part {
+    font-family: var(--font-family);
+    font-weight: bold;
+}
+
+/* 波浪字母继承字体 */
+.wave-letter {
+    font-family: inherit;
+}
+
+
+
